@@ -5,16 +5,15 @@ public class Conta {
 	//atributos
 		private int agencia;
 		private int numeroConta;
-		private double saldo;
-		private String titular;
-		
+		protected double saldo;
+		private PessoaHeranca titular;
 		
 		//construtores
 		public Conta() {//padrao
 			
 		}
 
-		public Conta(int agencia, int numeroConta, String titular) {//sobrecarregado
+		public Conta(int agencia, int numeroConta, PessoaHeranca titular) {//sobrecarregado
 			super();
 			this.agencia = agencia;
 			this.numeroConta = numeroConta;
@@ -42,7 +41,7 @@ public class Conta {
 		
 		public boolean transferir(double valor, Conta destinatario){
 			if (valor>0 && saldo >=valor) {
-				saldo = valor;
+				saldo -= valor;
 				destinatario.depositar(valor);
 				return true;
 			}			
@@ -82,23 +81,15 @@ public class Conta {
 		}
 
 
-		public String getTitular() {
+		public PessoaHeranca getTitular() {
 			return titular;
 		}
 
 
-		public void setTitular(String titular) {
+		public void setTitular(PessoaHeranca titular) {
 			this.titular = titular;
 		}
 		
-		
-		
-		
-	
-		
-		
-		
 
-	
 
 }
